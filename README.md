@@ -5,6 +5,6 @@
 The `UnityComponentContainer` implements the `IComponentContainer` interface.  
 
 ~~~c#
-var container = new UnityComponentContainer(new UnityContainer()
+var container = new UnityComponentContainer(new UnityContainer());
 ~~~
 

@@ -75,7 +75,7 @@
     <Compile Include="ISomeDependency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SomeDependency.cs" />
-    <Compile Include="WindsorComponentContainerFixture.cs" />
+    <Compile Include="UnityComponentContainerFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
