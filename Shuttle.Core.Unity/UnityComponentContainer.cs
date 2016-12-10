@@ -4,7 +4,7 @@ using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Unity
 {
-    public class UnityComponentContainer : IComponentContainer
+    public class UnityComponentContainer : IComponentRegistry, IComponentResolver
     {
         private readonly IUnityContainer _container;
 
@@ -29,7 +29,7 @@ namespace Shuttle.Core.Unity
             }
         }
 
-        public IComponentContainer Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
+        public IComponentRegistry Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
         {
             Guard.AgainstNull(serviceType, "serviceType");
             Guard.AgainstNull(implementationType, "implementationType");
@@ -38,12 +38,6 @@ namespace Shuttle.Core.Unity
             {
                 switch (lifestyle)
                 {
-                    case Lifestyle.Thread:
-                    {
-                        _container.RegisterType(serviceType, implementationType, new PerThreadLifetimeManager());
-
-                        break;
-                    }
                     case Lifestyle.Transient:
                     {
                         _container.RegisterType(serviceType, implementationType, new TransientLifetimeManager());
@@ -66,7 +60,7 @@ namespace Shuttle.Core.Unity
             return this;
         }
 
-        public IComponentContainer Register(Type serviceType, object instance)
+        public IComponentRegistry Register(Type serviceType, object instance)
         {
             Guard.AgainstNull(serviceType, "serviceType");
             Guard.AgainstNull(instance, "instance");
@@ -81,18 +75,6 @@ namespace Shuttle.Core.Unity
             }
 
             return this;
-        }
-
-        public bool IsRegistered(Type serviceType)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
-
-            return _container.IsRegistered(serviceType);
-        }
-
-        public T Resolve<T>() where T : class
-        {
-            return (T) Resolve(typeof (T));
         }
     }
 }
