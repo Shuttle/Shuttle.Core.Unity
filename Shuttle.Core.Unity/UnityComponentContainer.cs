@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Practices.Unity;
 using Shuttle.Core.Infrastructure;
 
@@ -22,6 +23,20 @@ namespace Shuttle.Core.Unity
             try
             {
                 return _container.Resolve(serviceType);
+            }
+            catch (Exception ex)
+            {
+                throw new TypeResolutionException(ex.Message, ex);
+            }
+        }
+
+        public IEnumerable<object> ResolveAll(Type serviceType)
+        {
+            Guard.AgainstNull(serviceType, "serviceType");
+
+            try
+            {
+                return _container.ResolveAll(serviceType);
             }
             catch (Exception ex)
             {
@@ -57,6 +72,44 @@ namespace Shuttle.Core.Unity
             {
                 throw new TypeRegistrationException(ex.Message, ex);
             }
+
+            return this;
+        }
+
+        public IComponentRegistry RegisterCollection(Type serviceType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
+        {
+            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(implementationTypes, "implementationTypes");
+
+            try
+            {
+                switch (lifestyle)
+                {
+                    case Lifestyle.Transient:
+                        {
+                            foreach (var implementationType in implementationTypes)
+                            {
+                                _container.RegisterType(serviceType, implementationType, implementationType.FullName, new TransientLifetimeManager());
+                            }
+
+                            break;
+                        }
+                    default:
+                        {
+                            foreach (var implementationType in implementationTypes)
+                            {
+                                _container.RegisterType(serviceType, implementationType, implementationType.FullName, new ContainerControlledLifetimeManager());
+                            }
+
+                            break;
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new TypeRegistrationException(ex.Message, ex);
+            }
+
             return this;
         }
 

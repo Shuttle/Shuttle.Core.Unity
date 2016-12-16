@@ -1,43 +1,38 @@
 ﻿using Microsoft.Practices.Unity;
 using NUnit.Framework;
+using Shuttle.Core.ComponentContainer.Tests;
 using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Unity.Tests
 {
     [TestFixture]
-    public class UnityComponentContainerFixture
+    public class UnityComponentContainerFixture : ComponentContainerFixture
     {
         [Test]
-        public void Should_be_able_to_register_and_resolve_a_type()
+        public void Should_be_able_resolve_all_instances()
         {
             var container = new UnityComponentContainer(new UnityContainer());
-            var serviceType = typeof(IDoSomething);
-            var implementationType = typeof(DoSomething);
 
-            container.Register(serviceType, implementationType, Lifestyle.Singleton);
-
-            Assert.NotNull(container.Resolve(serviceType));
-            Assert.AreEqual(implementationType, container.Resolve(serviceType).GetType());
-            Assert.Throws<TypeResolutionException>(() => container.Resolve(typeof(INotRegistered)));
+            RegisterCollection(container);
+            ResolveCollection(container);
         }
 
         [Test]
-        public void Should_be_able_to_use_constructor_injection()
+        public void Should_be_able_to_register_and_resolve_a_singleton()
         {
             var container = new UnityComponentContainer(new UnityContainer());
-            var serviceType = typeof(IDoSomething);
-            var implementationType = typeof(DoSomethingWithDependency);
 
-            container.Register(serviceType, implementationType, Lifestyle.Singleton);
+            RegisterSingleton(container);
+            ResolveSingleton(container);
+        }
 
-            Assert.Throws<TypeResolutionException>(() => container.Resolve(serviceType));
-            Assert.Throws<TypeResolutionException>(() => container.Resolve<IDoSomething>());
+        [Test]
+        public void Should_be_able_to_register_and_resolve_transient_components()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
 
-            var someDependency = new SomeDependency();
-
-            container.Register(typeof(ISomeDependency), someDependency);
-
-            Assert.AreSame(someDependency, container.Resolve<IDoSomething>().SomeDependency);
+            RegisterTransient(container);
+            ResolveTransient(container);
         }
     }
 }
