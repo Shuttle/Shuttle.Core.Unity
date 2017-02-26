@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 #if NET40FULL
@@ -25,11 +25,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Shuttle.Core.Unity for .NET Framework 4.6.1")]
 #endif
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyCopyright("Copyright © Eben Roux 2016")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyCopyright("Copyright © Eben Roux 2017")]
 [assembly: AssemblyProduct("Shuttle.Core")]
 [assembly: AssemblyCompany("Shuttle")]
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyInformationalVersion("7.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.1")]
 [assembly: ComVisible(false)]
 
