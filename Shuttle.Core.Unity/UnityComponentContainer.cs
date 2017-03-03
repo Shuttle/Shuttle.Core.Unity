@@ -5,129 +5,135 @@ using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Unity
 {
-    public class UnityComponentContainer : IComponentRegistry, IComponentResolver
-    {
-        private readonly IUnityContainer _container;
+	public class UnityComponentContainer : ComponentRegistry, IComponentResolver
+	{
+		private readonly IUnityContainer _container;
 
-        public UnityComponentContainer(IUnityContainer container)
-        {
-            Guard.AgainstNull(container, "container");
+		public UnityComponentContainer(IUnityContainer container)
+		{
+			Guard.AgainstNull(container, "container");
 
-            _container = container;
-        }
+			_container = container;
+		}
 
-        public object Resolve(Type serviceType)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
+		public object Resolve(Type dependencyType)
+		{
+			Guard.AgainstNull(dependencyType, "dependencyType");
 
-            try
-            {
-                return _container.Resolve(serviceType);
-            }
-            catch (Exception ex)
-            {
-                throw new TypeResolutionException(ex.Message, ex);
-            }
-        }
+			try
+			{
+				return _container.Resolve(dependencyType);
+			}
+			catch (Exception ex)
+			{
+				throw new TypeResolutionException(ex.Message, ex);
+			}
+		}
 
-        public IEnumerable<object> ResolveAll(Type serviceType)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
+		public IEnumerable<object> ResolveAll(Type dependencyType)
+		{
+			Guard.AgainstNull(dependencyType, "dependencyType");
 
-            try
-            {
-                return _container.ResolveAll(serviceType);
-            }
-            catch (Exception ex)
-            {
-                throw new TypeResolutionException(ex.Message, ex);
-            }
-        }
+			try
+			{
+				return _container.ResolveAll(dependencyType);
+			}
+			catch (Exception ex)
+			{
+				throw new TypeResolutionException(ex.Message, ex);
+			}
+		}
 
-        public IComponentRegistry Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
-            Guard.AgainstNull(implementationType, "implementationType");
+		public override IComponentRegistry Register(Type dependencyType, Type implementationType, Lifestyle lifestyle)
+		{
+			Guard.AgainstNull(dependencyType, "dependencyType");
+			Guard.AgainstNull(implementationType, "implementationType");
 
-            try
-            {
-                switch (lifestyle)
-                {
-                    case Lifestyle.Transient:
-                    {
-                        _container.RegisterType(serviceType, implementationType, new TransientLifetimeManager());
+			base.Register(dependencyType, implementationType, lifestyle);
 
-                        break;
-                    }
-                    default:
-                    {
-                        _container.RegisterType(serviceType, implementationType,
-                            new ContainerControlledLifetimeManager());
+			try
+			{
+				switch (lifestyle)
+				{
+					case Lifestyle.Transient:
+						{
+							_container.RegisterType(dependencyType, implementationType, new TransientLifetimeManager());
 
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new TypeRegistrationException(ex.Message, ex);
-            }
+							break;
+						}
+					default:
+						{
+							_container.RegisterType(dependencyType, implementationType,
+								new ContainerControlledLifetimeManager());
 
-            return this;
-        }
+							break;
+						}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new TypeRegistrationException(ex.Message, ex);
+			}
 
-        public IComponentRegistry RegisterCollection(Type serviceType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
-            Guard.AgainstNull(implementationTypes, "implementationTypes");
+			return this;
+		}
 
-            try
-            {
-                switch (lifestyle)
-                {
-                    case Lifestyle.Transient:
-                        {
-                            foreach (var implementationType in implementationTypes)
-                            {
-                                _container.RegisterType(serviceType, implementationType, implementationType.FullName, new TransientLifetimeManager());
-                            }
+		public override IComponentRegistry RegisterCollection(Type dependencyType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
+		{
+			Guard.AgainstNull(dependencyType, "dependencyType");
+			Guard.AgainstNull(implementationTypes, "implementationTypes");
 
-                            break;
-                        }
-                    default:
-                        {
-                            foreach (var implementationType in implementationTypes)
-                            {
-                                _container.RegisterType(serviceType, implementationType, implementationType.FullName, new ContainerControlledLifetimeManager());
-                            }
+			base.RegisterCollection(dependencyType, implementationTypes, lifestyle);
 
-                            break;
-                        }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new TypeRegistrationException(ex.Message, ex);
-            }
+			try
+			{
+				switch (lifestyle)
+				{
+					case Lifestyle.Transient:
+						{
+							foreach (var implementationType in implementationTypes)
+							{
+								_container.RegisterType(dependencyType, implementationType, implementationType.FullName, new TransientLifetimeManager());
+							}
 
-            return this;
-        }
+							break;
+						}
+					default:
+						{
+							foreach (var implementationType in implementationTypes)
+							{
+								_container.RegisterType(dependencyType, implementationType, implementationType.FullName, new ContainerControlledLifetimeManager());
+							}
 
-        public IComponentRegistry Register(Type serviceType, object instance)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
-            Guard.AgainstNull(instance, "instance");
+							break;
+						}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new TypeRegistrationException(ex.Message, ex);
+			}
 
-            try
-            {
-                _container.RegisterInstance(serviceType, instance);
-            }
-            catch (Exception ex)
-            {
-                throw new TypeRegistrationException(ex.Message, ex);
-            }
+			return this;
+		}
 
-            return this;
-        }
-    }
+		public override IComponentRegistry Register(Type dependencyType, object instance)
+		{
+			Guard.AgainstNull(dependencyType, "dependencyType");
+			Guard.AgainstNull(instance, "instance");
+
+			base.Register(dependencyType, instance);
+
+			try
+			{
+				_container.RegisterInstance(dependencyType, instance);
+			}
+			catch (Exception ex)
+			{
+				throw new TypeRegistrationException(ex.Message, ex);
+			}
+
+			return this;
+		}
+	}
 }
