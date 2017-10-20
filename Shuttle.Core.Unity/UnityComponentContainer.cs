@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Practices.Unity;
 using Shuttle.Core.Infrastructure;
+using Unity;
+using Unity.Lifetime;
 
 namespace Shuttle.Core.Unity
 {

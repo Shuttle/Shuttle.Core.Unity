@@ -1,7 +1,6 @@
-﻿using Microsoft.Practices.Unity;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Shuttle.Core.ComponentContainer.Tests;
-using Shuttle.Core.Infrastructure;
+using Unity;
 
 namespace Shuttle.Core.Unity.Tests
 {
@@ -18,12 +17,30 @@ namespace Shuttle.Core.Unity.Tests
         }
 
         [Test]
+        public void Should_be_able_to_register_and_resolve_a_multiple_singleton()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
+
+            RegisterMultipleSingleton(container);
+            ResolveMultipleSingleton(container);
+        }
+
+        [Test]
         public void Should_be_able_to_register_and_resolve_a_singleton()
         {
             var container = new UnityComponentContainer(new UnityContainer());
 
             RegisterSingleton(container);
             ResolveSingleton(container);
+        }
+
+        [Test]
+        public void Should_be_able_to_register_and_resolve_multiple_transient_components()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
+
+            RegisterMultipleTransient(container);
+            ResolveMultipleTransient(container);
         }
 
         [Test]
@@ -34,23 +51,5 @@ namespace Shuttle.Core.Unity.Tests
             RegisterTransient(container);
             ResolveTransient(container);
         }
-
-		[Test]
-		public void Should_be_able_to_register_and_resolve_a_multiple_singleton()
-		{
-			var container = new UnityComponentContainer(new UnityContainer());
-
-			RegisterMultipleSingleton(container);
-			ResolveMultipleSingleton(container);
-		}
-
-		[Test]
-		public void Should_be_able_to_register_and_resolve_multiple_transient_components()
-		{
-			var container = new UnityComponentContainer(new UnityContainer());
-
-			RegisterMultipleTransient(container);
-			ResolveMultipleTransient(container);
-		}
-	}
+    }
 }
