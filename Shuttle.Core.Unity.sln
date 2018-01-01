@@ -1,25 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Unity", "Shuttle.Core.Unity\Shuttle.Core.Unity.csproj", "{A406D6BD-40E5-43A5-A3D8-60E7B2C4FFE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Unity", "Shuttle.Core.Unity\Shuttle.Core.Unity.csproj", "{9AE963B0-1559-42BA-BCF8-7A5BFFF15F25}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06F23FAF-D381-4BB6-9258-B13E2D5F615F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Unity.Tests", "Shuttle.Core.Unity.Tests\Shuttle.Core.Unity.Tests.csproj", "{F257D651-8C52-402D-BAA7-AE7FDD6F6426}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73082681-3132-4076-9880-7178167EDFB7}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{5BADA3D1-FD93-4EB8-9958-CD4E5824EAE7}"
-	ProjectSection(SolutionItems) = preProject
-		.build\package.msbuild = .build\package.msbuild
-		.build\package.nuspec = .build\package.nuspec
-		.build\Shuttle.Core.MSBuild.dll = .build\Shuttle.Core.MSBuild.dll
-		.build\Shuttle.Core.MSBuild.targets = .build\Shuttle.Core.MSBuild.targets
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Unity.Tests", "Shuttle.Core.Unity.Tests\Shuttle.Core.Unity.Tests.csproj", "{23C06963-4504-4424-93E5-38223BBF93F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,16 +19,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A406D6BD-40E5-43A5-A3D8-60E7B2C4FFE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A406D6BD-40E5-43A5-A3D8-60E7B2C4FFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A406D6BD-40E5-43A5-A3D8-60E7B2C4FFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A406D6BD-40E5-43A5-A3D8-60E7B2C4FFE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23C06963-4504-4424-93E5-38223BBF93F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23C06963-4504-4424-93E5-38223BBF93F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23C06963-4504-4424-93E5-38223BBF93F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23C06963-4504-4424-93E5-38223BBF93F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE963B0-1559-42BA-BCF8-7A5BFFF15F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE963B0-1559-42BA-BCF8-7A5BFFF15F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE963B0-1559-42BA-BCF8-7A5BFFF15F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE963B0-1559-42BA-BCF8-7A5BFFF15F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F257D651-8C52-402D-BAA7-AE7FDD6F6426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F257D651-8C52-402D-BAA7-AE7FDD6F6426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F257D651-8C52-402D-BAA7-AE7FDD6F6426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F257D651-8C52-402D-BAA7-AE7FDD6F6426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE3CDE72-20F5-41FC-A72A-07CC4DB84DC4}
 	EndGlobalSection
 EndGlobal

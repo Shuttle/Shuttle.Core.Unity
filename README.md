@@ -1,4 +1,4 @@
-# Shuttle.Core.Castle
+# Shuttle.Core.Unity
 
 # UnityComponentContainer
 
