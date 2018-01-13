@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Shuttle.Core.Container" Version="10.0.4" />
-    <PackageReference Include="Unity" Version="5.5.4" />
+    <PackageReference Include="Shuttle.Core.Container" Version="10.0.5" />
+    <PackageReference Include="Unity" Version="5.5.5" />
   </ItemGroup>
 
 </Project>

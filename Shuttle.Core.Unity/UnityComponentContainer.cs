@@ -119,12 +119,12 @@ namespace Shuttle.Core.Unity
 			return this;
 		}
 
-		public override IComponentRegistry Register(Type dependencyType, object instance)
+		public override IComponentRegistry RegisterInstance(Type dependencyType, object instance)
 		{
 			Guard.AgainstNull(dependencyType, "dependencyType");
 			Guard.AgainstNull(instance, "instance");
 
-			base.Register(dependencyType, instance);
+			base.RegisterInstance(dependencyType, instance);
 
 			try
 			{
