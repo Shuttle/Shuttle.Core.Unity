@@ -26,15 +26,6 @@ namespace Shuttle.Core.Unity.Tests
         }
 
         [Test]
-        public void Should_be_able_to_register_and_resolve_a_singleton()
-        {
-            var container = new UnityComponentContainer(new UnityContainer());
-
-            RegisterSingleton(container);
-            ResolveSingleton(container);
-        }
-
-        [Test]
         public void Should_be_able_to_register_and_resolve_multiple_transient_components()
         {
             var container = new UnityComponentContainer(new UnityContainer());
@@ -44,12 +35,39 @@ namespace Shuttle.Core.Unity.Tests
         }
 
         [Test]
+        public void Should_be_able_to_register_and_resolve_a_singleton()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
+
+            RegisterSingleton(container);
+            ResolveSingleton(container);
+        }
+
+        [Test]
         public void Should_be_able_to_register_and_resolve_transient_components()
         {
             var container = new UnityComponentContainer(new UnityContainer());
 
             RegisterTransient(container);
             ResolveTransient(container);
+        }
+
+        [Test]
+        public void Should_be_able_to_register_and_resolve_an_open_generic_singleton()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
+
+            RegisterSingletonOpen(container);
+            ResolveSingletonOpen(container);
+        }
+
+        [Test]
+        public void Should_be_able_to_register_and_resolve_transient_open_generic_components()
+        {
+            var container = new UnityComponentContainer(new UnityContainer());
+
+            RegisterTransientOpen(container);
+            ResolveTransientOpen(container);
         }
     }
 }
