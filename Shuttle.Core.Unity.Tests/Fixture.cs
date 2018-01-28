@@ -57,8 +57,8 @@ namespace Shuttle.Core.Unity.Tests
         {
             var container = new UnityComponentContainer(new UnityContainer());
 
-            RegisterSingletonOpen(container);
-            ResolveSingletonOpen(container);
+            RegisterSingletonGeneric(container);
+            ResolveSingletonGeneric(container);
         }
 
         [Test]
@@ -66,8 +66,8 @@ namespace Shuttle.Core.Unity.Tests
         {
             var container = new UnityComponentContainer(new UnityContainer());
 
-            RegisterTransientOpen(container);
-            ResolveTransientOpen(container);
+            RegisterTransientGeneric(container);
+            ResolveTransientGeneric(container);
         }
     }
 }
