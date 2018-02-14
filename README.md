@@ -1,10 +1,12 @@
 # Shuttle.Core.Unity
 
-# UnityComponentContainer
+```
+PM> Install-Package Shuttle.Core.Unity
+```
 
 The `UnityComponentContainer` implements the `IComponentContainer` interface.  
 
-~~~c#
+```c#
 var container = new UnityComponentContainer(new UnityContainer());
-~~~
+```
 
