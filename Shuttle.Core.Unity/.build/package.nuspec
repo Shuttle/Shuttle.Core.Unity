@@ -9,6 +9,7 @@
     <licenseUrl>https://github.com/shuttle/Shuttle.Core.Unity/raw/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/shuttle/Shuttle.Core.Unity</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Unity/master/.media/logo.png</iconUrl>
+    <repository type="git" url="https://github.com/Shuttle/Shuttle.Core.Unity.git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>UnityContainer implementation of the Shuttle.Core.Container dependency injection interfaces</description>
     <releaseNotes />
