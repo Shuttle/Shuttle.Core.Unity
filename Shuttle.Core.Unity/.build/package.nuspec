@@ -6,7 +6,8 @@
     <version>{semver}</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
-    <licenseUrl>https://github.com/shuttle/Shuttle.Core.Unity/raw/master/LICENSE</licenseUrl>
+    <license type="expression">BSD-3-Clause</license>
+    <license>https://github.com/shuttle/Shuttle.Core.Unity/raw/master/LICENSE</license>
     <projectUrl>https://github.com/shuttle/Shuttle.Core.Unity</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Unity/master/.media/logo.png</iconUrl>
     <repository type="git" url="https://github.com/Shuttle/Shuttle.Core.Unity.git" />
