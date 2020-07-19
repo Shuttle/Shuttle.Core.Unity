@@ -8,7 +8,7 @@
     <owners>Eben Roux</owners>
     <license type="expression">BSD-3-Clause</license>
     <projectUrl>https://github.com/shuttle/Shuttle.Core.Unity</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Unity/master/.media/logo.png</iconUrl>
+    <icon>images\logo.png</icon>
     <repository type="git" url="https://github.com/Shuttle/Shuttle.Core.Unity.git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>UnityContainer implementation of the Shuttle.Core.Container dependency injection interfaces</description>
@@ -20,4 +20,8 @@
       <dependency id="Unity" version="{Unity-version}" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="..\..\..\..\.media\logo.png" target="images\" />
+    <file src="lib\**\*.*" target="lib" />
+  </files>
 </package>
