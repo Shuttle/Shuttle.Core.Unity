@@ -1,22 +1,22 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-#if NET461
-[assembly: AssemblyTitle(".NET Framework 4.6.1")]
+#if NETFRAMEWORK
+[assembly: AssemblyTitle(".NET Framework")]
 #endif
 
-#if NETCOREAPP2_1
-[assembly: AssemblyTitle(".NET Core 2.1")]
+#if NETCOREAPP
+[assembly: AssemblyTitle(".NET Core")]
 #endif
 
-#if NETSTANDARD2_0
-[assembly: AssemblyTitle(".NET Standard 2.0")]
+#if NETSTANDARD
+[assembly: AssemblyTitle(".NET Standard")]
 #endif
 
-[assembly: AssemblyVersion("10.0.8.0")]
-[assembly: AssemblyCopyright("Copyright © Eben Roux 2019")]
+[assembly: AssemblyVersion("10.0.9.0")]
+[assembly: AssemblyCopyright("Copyright (c) 2020, Eben Roux")]
 [assembly: AssemblyProduct("Shuttle.Core.Unity")]
-[assembly: AssemblyCompany("Shuttle")]
+[assembly: AssemblyCompany("Eben Roux")]
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyInformationalVersion("10.0.8")]
+[assembly: AssemblyInformationalVersion("10.0.9")]
 [assembly: ComVisible(false)]
